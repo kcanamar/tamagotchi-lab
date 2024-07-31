@@ -42,10 +42,26 @@ function init(){
 function runGame() {
     // console.log("game running")
     updateStates()
+    checkGameOver()
+    render()
 }
 
 function render(){
     console.log("content rendering")
+    // display the state properties to the DOM
+    boredomStatEl.textContent = state.boredom
+    hungerStatEl.textContent = state.hunger
+    sleepinessStatEl.textContent = state.sleepiness
+
+    if (gameOver) {
+
+        // display the hidden elements
+        resetBtnEl.classList.remove('hidden')
+        gameMessageEl.classList.remove('hidden')
+
+        // clear the timer
+        clearInterval(timer)
+    }
 }
 
 function updateStates() {
@@ -55,6 +71,17 @@ function updateStates() {
     state.hunger += randomInt()
     state.sleepiness += randomInt()
 
+}
+
+function checkGameOver() {
+    // check if the gameOver variable is true or false
+    if (
+        state.boredom >9 ||
+        state.hunger > 9 ||
+        state.sleepiness > 9
+    ){
+        gameOver = true
+    }
 }
 
 function randomInt() {
