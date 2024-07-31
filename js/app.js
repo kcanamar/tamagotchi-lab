@@ -40,11 +40,25 @@ function init(){
 }
 
 function runGame() {
-    console.log("game running")
+    // console.log("game running")
+    updateStates()
 }
 
 function render(){
     console.log("content rendering")
+}
+
+function updateStates() {
+    // We need to target the global state properties
+    
+    state.boredom += randomInt()
+    state.hunger += randomInt()
+    state.sleepiness += randomInt()
+
+}
+
+function randomInt() {
+    return Math.floor(Math.random() * 4)
 }
 /*----------------------------- Event Listeners -----------------------------*/
 
